@@ -1,0 +1,3 @@
+class StartingPoint
+  
+end
