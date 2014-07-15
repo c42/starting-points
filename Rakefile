@@ -4,7 +4,7 @@ require 'simplecov'
 
 
 MetricFu.configuration.configure_metrics.each do |metric|
-  if [:churn, :flay, :flog, :simplecov].include?(metric.name)
+  if [:churn, :flay, :flog].include?(metric.name)
     metric.enabled = true
   else
     metric.enabled = false
@@ -32,14 +32,17 @@ namespace :coverage do
   desc ""
   task :unit do
     SimpleCov.start do
+      SimpleCov.coverage_dir 'coverage/unit/'
       Rake::Task['unit'].invoke
     end
   end
   desc ""
   task :integration do
     SimpleCov.start do
+      SimpleCov.coverage_dir 'coverage/integration/'
       Rake::Task['integration'].invoke
     end
+
   end
 end
 
