@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe StartingPoint do
+describe Application do
   it "fails" do
-    fail
+    #fail
   end
 end
