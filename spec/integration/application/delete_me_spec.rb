@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Application do
+describe "Integration Test of Application" do
   it "fails" do
     #fail
   end

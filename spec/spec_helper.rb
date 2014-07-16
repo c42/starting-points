@@ -15,10 +15,9 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-=begin ---from Vineeth
+
 require 'simplecov'
-SimpleCov.start
-=end
+SimpleCov.start if ENV["COVERAGE"] == "enable"
 
 Dir[File.join("#{File.expand_path(File.dirname(__FILE__))}","..", "lib", "*.rb")].map {|f| require f}
 RSpec.configure do |config|

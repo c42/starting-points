@@ -1,5 +1,5 @@
 MetricFu.configuration.configure_metrics.each do |metric|
-  if [:churn, :flay, :flog, :simplecov].include?(metric.name)
+  if [:churn, :flay, :flog].include?(metric.name)
     metric.enabled = true
   else
     metric.enabled = false
