@@ -1,16 +1,5 @@
 require 'rspec/core/rake_task'
 require 'metric_fu'
-require 'simplecov'
-
-
-MetricFu.configuration.configure_metrics.each do |metric|
-  if [:churn, :flay, :flog, :simplecov].include?(metric.name)
-    metric.enabled = true
-  else
-    metric.enabled = false
-  end
-end
-
 
 desc 'Create tasks to run unit tests'
 
@@ -30,16 +19,15 @@ desc 'Default: run specs and generate metrics'
 
 namespace :coverage do
   desc ""
-  task :unit do
-    SimpleCov.start do
-      Rake::Task['unit'].invoke
-    end
-  end
-  desc ""
   task :integration do
-    SimpleCov.start do
-      Rake::Task['integration'].invoke
-    end
+    ENV["COVERAGE"] = "disable"
+    Rake::Task['integration'].invoke
+  end
+
+  desc ""
+  task :unit do
+    ENV["COVERAGE"] = "enable"
+    Rake::Task['unit'].invoke
   end
 end
 
